@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![Header](docs/assets/github-header-image.png)
 
 # Stable-Diffusion-Android (SDAI)
@@ -155,3 +156,7 @@ This software is open source, provided with no warranty, and you are welcome to 
 In case you find this software valuable, and you'd like to say thanks and show a little support, here is the button:
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/shifthackz)
+=======
+# offline
+Image Generator
+>>>>>>> aebab1c59b1e0a96c5ccb7dd3b115964f73ddb40
