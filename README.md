@@ -1,162 +1,224 @@
-<<<<<<< HEAD
-![Header](docs/assets/github-header-image.png)
+<div align="center">
 
-# Stable-Diffusion-Android (SDAI)
+#  OfflineImageGen
 
-![Google Play](https://img.shields.io/endpoint?color=blue&logo=google-play&logoColor=white&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Dcom.shifthackz.aisdv1.app%26l%3DGoogle%2520Play%26m%3D%24version)
-![F-Droid](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Ff-droid.org%2Fapi%2Fv1%2Fpackages%2Fcom.shifthackz.aisdv1.app.foss&query=%24.packages%5B0%5D.versionName&label=F-Droid&link=https%3A%2F%2Ff-droid.org%2Fpackages%2Fcom.shifthackz.aisdv1.app.foss%2F)
+### AI Image Generation — Fully On-Device
 
+**Generate stunning images from text prompts using Stable Diffusion 100% offline.**  
+No internet. No subscriptions. No API keys. Your prompts never leave your phone.
 
-[![Google Play](docs/assets/google_play.png)](https://play.google.com/store/apps/details?id=com.shifthackz.aisdv1.app)
-[![F-Droid](docs/assets/fdroid.png)](https://f-droid.org/packages/com.shifthackz.aisdv1.app.foss)
-[![4pda](docs/assets/4pda.png)](https://4pda.to/forum/index.php?showtopic=1082639)
+<br/>
 
-Stable Diffusion AI (SDAI) is an easy-to-use app that:
+[![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com)
+[![ONNX Runtime](https://img.shields.io/badge/ONNX_Runtime-005CED?style=for-the-badge&logo=onnx&logoColor=white)](https://onnxruntime.ai)
+[![Stable Diffusion](https://img.shields.io/badge/Stable_Diffusion-FF6F00?style=for-the-badge&logo=adobeillustrator&logoColor=white)](https://stability.ai)
+[![License](https://img.shields.io/badge/License-Educational-lightgrey?style=for-the-badge)](LICENSE)
 
-- Brings you the power of digital art creativity with Stable Diffusion AI
-- Gives you freedom to choose your AI generation provider
-- Has no ADs, telemetry and does not spy on you
+</div>
 
-## Screenshots
+---
 
-![](docs/assets/scr_group_1.png)
-![](docs/assets/scr_group_2.png)
+## ✨ Features
 
-## Features
+| Feature | Description |
+|---|---|
+| 🎨 **Text-to-Image** | Generate images from any text prompt. |
+| 🔒 **100% Offline** | No internet needed after initial setup. |
+| ⚡ **On-Device Inference** | Runs directly on your Android hardware |
+| 💾 **Local Storage** | Save generated images to your device. |
+| 🚫 **No API Keys** | Completely free to use, forever. |
+| 🔐 **Privacy-First** | Prompts and images never leave your device. |
 
-- Can use server environment powered by [AI Horde](https://stablehorde.net/) (a crowdsourced distributed cluster of Stable Diffusion workers)
-- Can use server environment powered by [Stable-Diffusion-WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) (AUTOMATIC1111)
-- Can use server environment powered by [SwarmUI](https://github.com/mcmonkeyprojects/SwarmUI)
-- Can use server environment powered by [Hugging Face Inference API](https://huggingface.co/docs/api-inference/quicktour).
-- Can use server environment powered by [OpenAI](https://platform.openai.com/docs/api-reference/images) (DALL-E-2, DALL-E-3).
-- Can use server environment powered by [Stability AI](https://platform.stability.ai/).
-- Can use local environment powered by LocalDiffusion (Beta)
-- Supports original Txt2Img, Img2Img modes
-  - **Positive** and **negative** prompt support
-  - Support dynamic **size** in range from 64 to 2048 px (for width and height)
-  - Selection of different **sampling methods** (available samplers are loaded from server)
-  - Unique **seed** input
-  - Dynamic **sampling steps** in range from 1 to 150
-  - Dynamic **CFG scale** in range from 1.0 to 30.0
-  - **Restore faces** option
-  - ( Img2Img ONLY ) : Image selection from device gallery _(requires user permission)_
-  - ( Img2Img ONLY ) : Capture input image from camera _(requires user permission)_
-  - ( Img2Img ONLY ) : Fetching random image for the input
-  - ( Img2Img ONLY ) : Inpaint (for A1111)
-    - Mask blur (1 to 64)
-    - Mask mode (Masked, not masked)
-    - Masked content (Fill, Original, Latent noise, Latent nothing)
-    - Inpaint area (Whole picture, only masked)
-    - Only masked padding (0 to 256 px)
-  - Batch generation with maximum of 20 images (for A1111 and Horde)
-  - Lora picker (for A1111)
-  - Textual inversion picker (for A1111)
-  - Hypernetworks picker (for A1111)
-  - SD Model picker (for A1111)
-- In-app Gallery, stored locally, contains all AI generated images
-  - Displays generated images grid
-  - Image detail view: Zoom, Pinch, Generation Info. 
-  - Export all gallery to **.zip** file
-  - Export single photo to **.zip** file
-- Settings
-  - WebUI server URL
-  - Active SD Model selection
-  - Server availability monitoring (http-ping method)
-  - Enable/Disable auto-saving of generated images
-  - Enable/Disable saving generated images to `Download/SDAI` android MediaStore folder
-  - Clear gallery / app cache
+---
 
-## Setup instruction
+## 🛠️ Tech Stack
 
-### Option 1: Use your own Automatic1111 instance
+| Layer | Technology. |
+|---|---|
+| Language | Kotlin |
+| Platform | Android SDK |
+| Inference Engine | ONNX Runtime |
+| Model Architecture | Stable Diffusion |
+| Tokenizer | CLIP Tokenizer |
+| Scheduler | DDIM Scheduler |
 
-This requires you to have the AUTOMATIC1111 WebUI that is running in server mode.
+---
 
-You can have it running either on your own hardware with modern GPU from Nvidia or AMD, or running it using Google Colab. 
+## 🏗️ Project Structure
 
-1. Follow the setup instructions on [Stable-Diffusion-WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) repository.
-2. Add the arguments `--api --listen` to the command line arguments of WebUI launch script.
-3. After running the server, get the IP address, or URL of your WebUI server.
-4. On the first launch, app will ask you for the server URL, enter it and press "Connect" button. If you want to change the server URL, go to Settings tab, choose "Configure" option and repeat the setup flow.
+```
+app/
+├── src/main/
+│   ├── java/com/offlineimagegen/
+│   │   ├── MainActivity.kt                 # Entry point & UI
+│   │   ├── ImageGenerationEngine.kt        # Core SD pipeline
+│   │   ├── ImageGenerationViewModel.kt     # State management
+│   │   ├── DDIMScheduler.kt               # Denoising scheduler
+│   │   ├── SimpleClipTokenizer.kt          # Text tokenization
+│   │   └── ImageSaver.kt                   # Local storage handler
+│   │
+│   └── assets/
+│       ├── text_encoder.onnx               # CLIP text encoder
+│       ├── unet.onnx                       # Denoising UNet
+│       ├── vae_decoder.onnx                # Latent → image decoder
+│       ├── merges.txt                      # BPE merge rules
+│       └── vocab.json                      # Tokenizer vocabulary
+```
 
-If for some reason you have no ability to run your server instance, you can toggle the **Demo mode** switch on server setup page: it will allow you to test the app and get familiar with it, but it will return some mock images instead of AI-generated ones.
+---
 
-### Option 2: Use your own SwarmUI instance
+## 🚀 How It Works.
 
-This requires you to have the SwarmUI that is running in server mode.
+```
+  Text Prompt
+      │
+      ▼
+  ┌─────────────────────┐
+  │   CLIP Tokenizer    │  ← Converts text → tokens
+  └────────┬────────────┘
+           │
+           ▼
+  ┌─────────────────────┐
+  │   Text Encoder      │  ← Tokens → semantic embeddings
+  └────────┬────────────┘
+           │
+           ▼
+  ┌─────────────────────┐
+  │  DDIM Scheduler +   │  ← Iteratively denoises
+  │  UNet               │    latent representations
+  └────────┬────────────┘
+           │
+           ▼
+  ┌─────────────────────┐
+  │   VAE Decoder       │  ← Latents → pixel image
+  └────────┬────────────┘
+           │
+           ▼
+     Generated Image 🖼️
+```
 
-You can have it running either on your own hardware with modern GPU from Nvidia or AMD, or running it using Google Colab.
+1. User enters a text prompt
+2. The **CLIP tokenizer** converts the prompt into token IDs
+3. The **text encoder** transforms tokens into rich semantic embeddings
+4. The **DDIM scheduler** orchestrates iterative denoising steps
+5. The **UNet** predicts noise residuals at each step
+6. The **VAE decoder** converts the final latent tensor into a full image
+7. The image is displayed and can be saved to local storage
 
-Please refer to the [SwarmUI documentation](https://github.com/mcmonkeyprojects/SwarmUI?tab=readme-ov-file#swarmui) for installation instructions.
+---
 
-### Option 3: Use AI Horde
+## ⚙️ Installation
 
-[AI Horde](https://stablehorde.net/) is a crowdsourced distributed cluster of Image generation workers and text generation workers. 
+### 1. Clone the Repository
 
-AI Horde requires to use API KEY, this mobile app allows to use either default API KEY (which is "0000000000"), or type your own. You can sign up and get your own AI Horde API KEY [here](https://stablehorde.net/register).
+```bash
+git clone https://github.com/mohithshuka/offlineimageGen.git
+cd offlineimageGen
+```
 
-### Option 4: Hugging Face Inference
+### 2. Open in Android Studio
 
-[Hugging Face Inference API](https://huggingface.co/docs/api-inference/index) allows to test and evaluate, over 150,000 publicly accessible machine learning models, or your own private models, via simple HTTP requests, with fast inference hosted on Hugging Face shared infrastructure. This service is free, but is rate-limited.
+1. Launch **Android Studio**
+2. Select **Open Existing Project**
+3. Navigate to the cloned folder
+4. Wait for **Gradle sync** to complete
 
-Hugging Face Inference requires to use API KEY, which can be created in [Hugging Face account settings](https://huggingface.co/settings/tokens).
+### 3. Add Model Files
 
-### Option 5: OpenAI
+> ⚠️ Model files are not included in the repository due to size constraints.
 
-OpenAI provides a service for text to image generation using [DALLE-2](https://openai.com/dall-e-2) or [DALLE-3](https://openai.com/dall-e-3) models. This service is paid. 
+Download the required ONNX model files and place them in `app/src/main/assets/`:
 
-OpenAI requires to use API KEY, which can be created in [OpenAI API Key settings](https://platform.openai.com/api-keys).
+```
+app/src/main/assets/
+├── text_encoder.onnx
+├── unet.onnx
+├── vae_decoder.onnx
+├── merges.txt
+└── vocab.json
+```
 
-### Option 6: StabilityAI
+### 4. Run the App
 
-[StabilityAI](https://platform.stability.ai/) is the image generation service provided by DreamStudio.
+Connect an Android device or start an emulator, then click **Run ▶️**.
 
-StabilityAI requires to use API KEY, which can be created in [API Keys page](https://platform.stability.ai/account/keys).
+---
 
-### Option 7: Local Diffusion Microsoft ONNX Runtime (Beta)
+## 📷 Screenshots
 
-Only **txt2img** mode is supported.
+> Add screenshots here to showcase your app!
 
-Allows to use phone resources to generate images.
+ Result
+ <img width="1861" height="964" alt="Screenshot 2025-10-21 233715" src="https://github.com/user-attachments/assets/06df9e33-de4a-42a7-b82d-7ed7539b44b3" />
 
-### Option 8: Local Diffusion Google AI MediaPipe (Beta)
+---
 
-Available only in **playstore** and **full** flavors.
+## Download the app
 
-Only **txt2img** mode is supported.
+> set this project in your android studio
+> https://github.com/mohithshuka/offlineimageGen/edit/main/README.md
+> build apk in andriod studio then you can oparate on phone  
 
-Allows to use phone resources to generate images.
+---
 
-## Supported languages
+## 🔒 Privacy
 
-App uses the language provided by OS default settings.
+Unlike cloud-based AI image generators, OfflineImageGen performs all inference **entirely on-device**.
 
-User interface of the app is translated for languages listed in this table:
+- ✅ Prompts are **never uploaded**
+- ✅ Images are **never transmitted**
+- ✅ No user data is **collected or stored remotely**
+- ✅ Works in **airplane mode**
 
-| Language | Since version | Status |
-| --- | --- | --- |
-| English | 0.1.0 | `Translated` |
-| Ukrainian | 0.1.0 | `Translated` |
-| Turkish | 0.4.1 | `Translated` |
-| Russian | 0.5.5 | `Translated` |
-| Chinese (Simplified) | 0.6.2 | `Translated` |
+Your creativity stays private, Always.
 
-Any contributions to the translations are welcome.
+---
 
-## Difference between build flavors (Google Play, F-Droid, GitHub releases)
+## 🎯 Roadmap
 
-There are some reasons that some of the SDAI app features can not be distributed through different sources (Google Play, F-Droid) because of rules and compliance policies.
+- [ ] Negative prompts support
+- [ ] Adjustable inference steps
+- [ ] Image-to-image generation
+- [ ] Inpainting support
+- [ ] Model switching
+- [ ] Performance optimization (quantization, GPU delegation)
+- [ ] Material 3 UI enhancements
 
-The difference between SDAI app flavors are described at the project wiki page [Build flavor difference](https://github.com/ShiftHackZ/Stable-Diffusion-Android/wiki/Build-flavor-difference).
+---
 
-## Donate
+## 🤝 Contributing
 
-This software is open source, provided with no warranty, and you are welcome to use it for free. 
+Contributions are welcome and appreciated!
 
-In case you find this software valuable, and you'd like to say thanks and show a little support, here is the button:
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/your-feature-name`
+3. **Commit** your changes: `git commit -m 'Add some feature'`
+4. **Push** to the branch: `git push origin feature/your-feature-name`
+5. **Open** a Pull Request
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/shifthackz)
-=======
-# offline
-Image Generator
->>>>>>> aebab1c59b1e0a96c5ccb7dd3b115964f73ddb40
+---
+
+## 📄 License
+
+This project is intended for **educational and research purposes**.
+
+Please ensure compliance with the licenses of:
+- [Stable Diffusion](https://huggingface.co/spaces/CompVis/stable-diffusion-license) models.
+- [ONNX Runtime](https://github.com/microsoft/onnxruntime/blob/main/LICENSE) .
+
+---
+
+## 👨‍💻 Author
+
+**Mohith Shuka**
+
+[![GitHub](https://img.shields.io/badge/GitHub-@mohithshuka-181717?style=flat-square&logo=github)](https://github.com/mohithshuka)
+
+---
+
+<div align="center">
+
+If you found this project useful, please consider giving it a ⭐ on GitHub — it helps a lot!
+
+</div>
